@@ -94,6 +94,11 @@ func enums() {
 }
 
 func main() {
+
+	fmt.Println(aa)
+	fmt.Println(bb)
+	fmt.Println(ss)
+
 	helloWorld()
 	variableZeroValue()
 	variableInitialValue()
