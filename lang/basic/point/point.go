@@ -33,6 +33,12 @@ func exchange(a, b *int) {
 	t := *a
 	*a = *b
 	*b = t
+	// another
+	// *a,*b = *b,*a
+}
+
+func swap(a, b int) (int, int) {
+	return b, a
 }
 
 func main() {
@@ -42,4 +48,9 @@ func main() {
 	exchange(&a, &b)
 	fmt.Printf("a = %d\n", a)
 	fmt.Printf("b = %d\n", b)
+
+	a, b = swap(a, b)
+	fmt.Printf("a = %d\n", a)
+	fmt.Printf("b = %d\n", b)
+
 }
