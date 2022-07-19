@@ -8,7 +8,7 @@ import (
 打印 slice 的各个属性
 */
 func printSlice(s []int) {
-	fmt.Printf("%v, len=%d, cap=%d\n",
+	fmt.Printf("%v, len=%d, cap=%d\n\n",
 		s, len(s), cap(s))
 }
 
@@ -26,4 +26,14 @@ func sliceOps() {
 	s1 := []int{2, 4, 6, 8}
 	printSlice(s1)
 
+	// 一种新的定义的方式
+	s2 := make([]int, 16)
+	s3 := make([]int, 10, 32)
+	printSlice(s2)
+	printSlice(s3)
+
+}
+
+func main() {
+	sliceOps()
 }

@@ -101,6 +101,8 @@ func reSlice2() {
 
 }
 
+/*
 func main() {
 	reSlice2()
 }
+*/
