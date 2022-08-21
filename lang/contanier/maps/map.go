@@ -35,10 +35,10 @@ func declare() {
 
 func mapCurd() {
 	m := map[string]string{
-		"name":    "ccmouse",
-		"course":  "golang",
-		"site":    "imooc",
-		"quality": "notbad",
+		"name":     "ccmouse",
+		"tutorial": "golang",
+		"site":     "imooc",
+		"quality":  "notbad",
 	}
 
 	fmt.Println("Getting Value")
