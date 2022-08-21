@@ -5,7 +5,7 @@ import (
 )
 
 /**
-打印 slice 的各个属性
+打印 slices 的各个属性
 */
 func printSlice(s []int) {
 	fmt.Printf("%v, len=%d, cap=%d\n\n",

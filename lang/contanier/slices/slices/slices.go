@@ -36,7 +36,7 @@ func study() {
 	s2 = s2[2:]
 	fmt.Println(s2)
 
-	fmt.Println("Extending slice")
+	fmt.Println("Extending slices")
 	arr[0], arr[2] = 0, 2
 	fmt.Println("arr =", arr)
 	s1 = arr[2:6]
@@ -101,8 +101,6 @@ func reSlice2() {
 
 }
 
-/*
 func main() {
 	reSlice2()
 }
-*/
