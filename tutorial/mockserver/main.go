@@ -15,7 +15,7 @@ import (
 	"iproute.org/learngo/tutorial/mockserver/recommendation"
 )
 
-const templateSuggestion = "Please make sure working directory is the root of the repository, where we have go.mod/go.sum. Suggested command line: go run mockserver/main.go"
+const templateSuggestion = "Please make sure working directory is the root of the repository, where we have go.mod/go.sum. Suggested command line: go run mockserver/demo.go"
 
 func main() {
 	profileTemplate, err := template.ParseFiles("mockserver/generator/profile/profile_tmpl.html")

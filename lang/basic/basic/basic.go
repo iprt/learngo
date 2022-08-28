@@ -53,7 +53,7 @@ func triangle() {
 	fmt.Println(calcTriangle(a, b))
 }
 
-//func calcTriangle(a int, b int) int {
+// func calcTriangle(a int, b int) int {
 func calcTriangle(a, b int) int {
 	sqrt := math.Sqrt(float64(a*a + b*b))
 	return int(sqrt)

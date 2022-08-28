@@ -41,11 +41,11 @@ func mapCurd() {
 		"quality":  "notbad",
 	}
 
-	fmt.Println("Getting Value")
+	fmt.Println("Getting value")
 	fmt.Printf("m[\"name\"] = %s\r\n", m["name"])
 	fmt.Println()
 
-	fmt.Println("Getting Value")
+	fmt.Println("Getting value")
 	if value, ok := m["what"]; ok {
 		fmt.Printf("m[\"name\"] = %s\r\n", value)
 	} else {
@@ -55,15 +55,15 @@ func mapCurd() {
 
 	mapForeach(m)
 
-	fmt.Println("Adding Value")
+	fmt.Println("Adding value")
 	m["winter"] = "fell"
 	mapForeach(m)
 
-	fmt.Println("Deleting Value")
+	fmt.Println("Deleting value")
 	delete(m, "name")
 	mapForeach(m)
 
-	fmt.Println("Changing Value")
+	fmt.Println("Changing value")
 	m["winter"] = "winterfell"
 	mapForeach(m)
 

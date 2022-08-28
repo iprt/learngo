@@ -72,7 +72,7 @@ func main() {
 
 func inspect(r Retriever) {
 	fmt.Println("Inspecting", r)
-	fmt.Printf(" > Type:%T Value:%v\n", r, r)
+	fmt.Printf(" > Type:%T value:%v\n", r, r)
 	fmt.Print(" > Type switch: ")
 	switch v := r.(type) {
 	case *mock.Retriever:
