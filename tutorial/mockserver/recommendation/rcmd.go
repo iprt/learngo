@@ -5,7 +5,7 @@ import "math/rand"
 
 // If given id is 20, we may generate 10, 15, 25, ...
 // Intentionally desgined to increase duplication within recommendation cycles,
-// to mimic real-world behvior.
+// to mimic really-world behvior.
 const (
 	step     = 5
 	offset   = -10
