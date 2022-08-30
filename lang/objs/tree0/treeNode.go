@@ -110,4 +110,11 @@ func main() {
 		fmt.Println("node's value is:", node.getValue())
 	})
 
+	count := 0
+	root.dfs(func(node *treeNode) {
+		count++
+	})
+
+	fmt.Println("size is ", count)
+
 }
