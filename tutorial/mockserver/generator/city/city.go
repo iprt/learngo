@@ -33,7 +33,7 @@ type params struct {
 	Page int    `uri:"page"`
 }
 
-// HandleRequest is the gin request handler for city generation.
+// HandleRequest is the gin request filelisting for city generation.
 func (g *Generator) HandleRequest(c *gin.Context) {
 	var p params
 	err := c.BindUri(&p)

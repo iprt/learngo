@@ -54,10 +54,68 @@ func writeFile(filename string) {
 	}
 }
 
+/**
+错误处理的示例
+*/
+
+/*
+func openFileNolog(name string, flag int, perm FileMode) (*File, error) {
+	if name == "" {
+		return nil, &PathError{Op: "open", Path: name, Err: syscall.ENOENT}
+	}
+	r, errf := openFile(name, flag, perm)
+	if errf == nil {
+		return r, nil
+	}
+	r, errd := openDir(name)
+	if errd == nil {
+		if flag&O_WRONLY != 0 || flag&O_RDWR != 0 {
+			r.Close()
+			return nil, &PathError{Op: "open", Path: name, Err: syscall.EISDIR}
+		}
+		return r, nil
+	}
+	return nil, &PathError{Op: "open", Path: name, Err: errf}
+}
+
+
+看看 error 到底是
+
+*/
+func writeFile2(filename string) {
+	file, err := os.OpenFile(filename, os.O_EXCL|os.O_CREATE, 0666)
+	// if err != nil {
+	// 	// 原来的写法：panic(err)
+	// 	fmt.Println("file already exists")
+	// 	return
+	// }
+
+	if err != nil {
+		if pathError, ok := err.(*os.PathError); ok {
+			fmt.Println("file already exists: ", pathError.Path)
+		} else {
+			// fmt.Println("other error")
+			panic(err)
+		}
+		return
+	}
+
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+	f := fib()
+	for i := 0; i < 20; i++ {
+		fmt.Fprintln(writer, f())
+	}
+}
+
 func main() {
 	// tryDefer()
-	// writeFile("fib.txt")
 
-	tryDefer2()
+	// tryDefer2()
+
+	// writeFile("fib.txt")
+	writeFile2("fib.txt")
 
 }

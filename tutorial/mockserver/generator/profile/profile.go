@@ -25,7 +25,7 @@ type Generator struct {
 	Recommendation Recommendation
 }
 
-// HandleRequest is the gin request handler for profile generation.
+// HandleRequest is the gin request filelisting for profile generation.
 func (g *Generator) HandleRequest(c *gin.Context) {
 	params := struct {
 		ID int64 `uri:"id" binding:"required"`

@@ -16,7 +16,7 @@ type Generator struct {
 	Tmpl *template.Template
 }
 
-// HandleRequest is the gin request handler for citylist generation.
+// HandleRequest is the gin request filelisting for citylist generation.
 func (g *Generator) HandleRequest(c *gin.Context) {
 	err := g.generate(c.Writer)
 
