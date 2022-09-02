@@ -50,19 +50,26 @@ func noError(writer http.ResponseWriter,
 	return nil
 }
 
+/**
+提取公共的测试参数
+*/
+var tests = []struct {
+	h       appHandler
+	code    int
+	message string
+}{
+	// {errorPanic, 500, ""},
+	{errorUserError, 502, "user error"},
+	{errorNotFound, 404, "Not Found"},
+	{errorNoPermission, 403, "Forbidden"},
+	{errorUnknown, 500, "Internal Server Error"},
+	{noError, 200, ""},
+}
+
+/**
+方法的测试
+*/
 func TestErrorWrapper(t *testing.T) {
-	tests := []struct {
-		h       appHandler
-		code    int
-		message string
-	}{
-		// {errorPanic, 500, ""},
-		{errorUserError, 502, "user error"},
-		{errorNotFound, 404, "Not Found"},
-		{errorNoPermission, 403, "Forbidden"},
-		{errorUnknown, 500, "Internal Server Error"},
-		{noError, 200, ""},
-	}
 
 	for _, tt := range tests {
 		f := errorWrapping(tt.h)
@@ -82,4 +89,28 @@ func TestErrorWrapper(t *testing.T) {
 		}
 
 	}
+}
+
+/**
+真正启动一个服务器来测试
+*/
+func TestErrorWrapperInServer(t *testing.T) {
+
+	for _, tt := range tests {
+		f := errorWrapping(tt.h)
+
+		server := httptest.NewServer(http.HandlerFunc(f))
+
+		resp, _ := http.Get(server.URL)
+
+		b, _ := ioutil.ReadAll(resp.Body)
+		body := strings.Trim(string(b), "\n")
+		if resp.StatusCode != tt.code || body != tt.message {
+			t.Errorf("excpect (%d %s) "+
+				"got (%d, %s)", tt.code, tt.message,
+				resp.StatusCode, body)
+		}
+
+	}
+
 }
