@@ -4,6 +4,8 @@ import (
 	"iproute.org/learngo/lang/errorhandling/filestringserver3/filelisting"
 	"log"
 	"net/http"
+	// 要加下划线
+	_ "net/http/pprof"
 	"os"
 )
 
